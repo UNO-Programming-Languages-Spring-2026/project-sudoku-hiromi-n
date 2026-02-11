@@ -18,5 +18,6 @@ sudoku(X, Y, N) :- initial(X, Y, N).
 :- sudoku(X, Y, N), sudoku(X', Y, N), not X=X'.
 
 % Constraint. Cannot have the same number for each group.
-:- sudoku(X, Y, N), sudoku(X', Y', N'), N=N', X!=X', Y!=Y', X=1..2, Y=1..2, X'=1..2, Y'=1..2.
+:- sudoku(X, Y, N), sudoku(X', Y', N), X!=X' ; Y!=Y',
+(( (X-1)/2)*2 + (Y-1)/2) = (( (X'-1)/2)*2 + (Y'-1)/2).
 
