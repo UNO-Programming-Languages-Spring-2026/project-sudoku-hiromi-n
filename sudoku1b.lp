@@ -20,7 +20,7 @@ sudoku(X,Y,N) :- initial(X,Y,N).
    #count { X : sudoku(X,Y,N) } != 1.
 
 % Assign each a subgrid
-subgrid(X, Y, G) :- sudoku(X, Y, _), G = ((((X-1)/2) + ((Y-1)/2)*2)+1).
+subgrid(X, Y, ((((X-1)/2)*2 + ((Y-1)/2))+1)) :- sudoku(X, Y, _).
 
 #show sudoku/3.
 #show subgrid/3.
