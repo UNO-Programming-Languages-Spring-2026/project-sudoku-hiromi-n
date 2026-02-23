@@ -23,7 +23,10 @@ sudoku(X,Y,N) :- initial(X,Y,N).
 subgrid(X, Y, ((((X-1)/2)*2 + ((Y-1)/2))+1)) :- sudoku(X, Y, _).
 
 % Each number appears exactly once per subgrid
-:- X=1..4, Y=1..4,
-    #count { G  : sudoku(X, Y, N), subgrid(X, Y, G) } != 1.
+% :- X=1..4, Y=1..4,
+%     #count { G  : sudoku(X, Y, N), subgrid(X, Y, G) } != 1.
+:- sudoku(X, Y, N), sudoku(X', Y', N), (X,Y) != (X',Y'),
+(( (X-1)/2)*2 + (Y-1)/2) = (( (X'-1)/2)*2 + (Y'-1)/2).
+
 
 #show sudoku/3.
